@@ -1,0 +1,1 @@
+{"version":3,"file":"setSession.js","sourceRoot":"","sources":["../../src/middleware/setSession.ts"],"names":[],"mappings":";;;AAAA,+BAAyB;AAGlB,MAAM,UAAU,GAAG,CAAC,GAAY,EAAE,IAAc,EAAE,IAAc,EAAQ,EAAE;IAC/E,IAAI,CAAC,GAAG,CAAC,OAAO,CAAC,QAAQ,EAAE;QACzB,GAAG,CAAC,OAAO,CAAC,QAAQ,GAAG,SAAE,EAAE,CAAA;KAC5B;IACD,IAAI,EAAE,CAAA;AACR,CAAC,CAAA;AALY,QAAA,UAAU,cAKtB"}

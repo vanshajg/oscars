@@ -1,0 +1,17 @@
+mutation GetPointMovie($imdb_id: String!) {
+  getPointMovie(imdb_id:$imdb_id) {
+    error {
+      message
+    }
+    movie {
+      title
+      movie_id
+      actors
+      year
+      rating
+      language
+      poster
+      plot
+    }
+  }
+}

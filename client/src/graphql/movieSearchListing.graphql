@@ -1,0 +1,13 @@
+mutation GetMovieListingBySearchTerm($options: MovieQuery!) {
+  getMovies(options: $options) {
+    error {
+      message
+    }
+    movies {
+      title
+      movie_id
+      year
+      poster
+    }
+  }
+}
