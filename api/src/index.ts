@@ -1,4 +1,5 @@
 import "reflect-metadata"
+import "dotenv-safe/config"
 import cors from 'cors';
 import express from 'express';
 import session from 'express-session';
@@ -22,7 +23,7 @@ const main = async () => {
   const redis = new Redis(process.env.REDIS_URL);
 
   app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: process.env.CORS_ORIGIN,
     credentials: true
   }))
 
@@ -41,7 +42,7 @@ const main = async () => {
         domain: __IS_PROD__ ? ".codeponder.com" : undefined,
       },
       saveUninitialized: false,
-      secret: process.env.SESSION_SECRET || "keyboard",
+      secret: process.env.SESSION_SECRET,
       resave: false,
     })
   );
@@ -60,7 +61,7 @@ const main = async () => {
 
   apolloServer.applyMiddleware({ app, cors: false });
 
-  app.listen(4000, () => {
+  app.listen(process.env.PORT, () => {
     console.log("server started at port 4000");
 
   });

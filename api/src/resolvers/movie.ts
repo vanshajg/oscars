@@ -1,9 +1,6 @@
-import { checkForResolveTypeResolver } from "apollo-server-express";
-import { Resolver, Query, Arg, Field, Ctx, InputType, Mutation } from "type-graphql";
-
-import { MyContext } from '../types'
+import { Arg, Field, InputType, Mutation, Resolver } from "type-graphql";
 import { formatOmdbSearchData, getOmdbSearchData } from "../utils/obdbSearchListing";
-import { formatOmdbPointData, getOmdbPointData } from '../utils/omdbPoint'
+import { formatOmdbPointData, getOmdbPointData } from '../utils/omdbPoint';
 import { MoviePointResponse } from "./moviePoint";
 import { MoviesResponse } from "./MoviesResponse";
 
@@ -28,7 +25,6 @@ export class MovieResolver {
 
   @Mutation(() => MoviePointResponse)
   async getPointMovie(@Arg("imdb_id") imdb_id: string): Promise<MoviePointResponse> {
-    console.log(imdb_id)
     const data = await getOmdbPointData({ imdb_id })
     return formatOmdbPointData(data)
   }

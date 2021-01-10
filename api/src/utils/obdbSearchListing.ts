@@ -25,7 +25,7 @@ interface omdbSearchResp {
 }
 
 export const getOmdbSearchData = ({ s: search_term, type = "movie", page = 1 }: omdbParams): Promise<omdbSearchResp> => {
-  const API_KEY = process.env.OMDB_KEY || 'ec24a15a'
+  const API_KEY = process.env.OMDB_KEY
   return axios.get(`http://www.omdbapi.com/?s=${search_term}&type=${type}&page=${page}&apikey=${API_KEY}`)
 }
 

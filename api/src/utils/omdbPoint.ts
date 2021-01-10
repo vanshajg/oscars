@@ -18,7 +18,7 @@ interface omdbPointResp {
 }
 
 export const getOmdbPointData = ({ imdb_id }: { imdb_id: string }): Promise<omdbPointResp> => {
-  const API_KEY = process.env.OMDB_KEY || 'ec24a15a'
+  const API_KEY = process.env.OMDB_KEY
   return axios.get(`http://www.omdbapi.com/?i=${imdb_id}&apikey=${API_KEY}`)
 }
 
