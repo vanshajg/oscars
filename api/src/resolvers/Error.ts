@@ -2,6 +2,6 @@ import { ObjectType, Field } from "type-graphql";
 
 @ObjectType()
 export class Error {
-  @Field()
+  @Field(() => String, { nullable: true })
   message: string;
 }

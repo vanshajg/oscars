@@ -1,0 +1,22 @@
+{
+  "name": "movie-app",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "https://github.com/vanshajg/oscars.git",
+  "author": "Vanshaj Girotra",
+  "license": "MIT",
+  "scripts": {
+    "build": "yarn workspace client run build",
+    "start": "yarn workspace server run start",
+    "dev": "export $(cat .env | xargs) && yarn workspace server run dev"
+  },
+  "private": true,
+  "workspaces": [
+    "api",
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": "14.x"
+  }
+}

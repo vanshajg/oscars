@@ -1,13 +1,11 @@
-import { Container } from '../../components/Container'
+import { Box, Image, Spinner, Stack, Text } from '@chakra-ui/react'
+import { isArray } from 'lodash'
 import { useRouter } from 'next/router'
-import { DarkModeSwitch } from '../../components/DarkModeSwitch'
-import { Box, Spinner, Text, Image, Link, Stack } from '@chakra-ui/react'
-import { useGetPointMovieMutation } from '../../generated/graphql'
 import { useEffect } from 'react'
+import { Container } from '../../components/Container'
+import { DarkModeSwitch } from '../../components/DarkModeSwitch'
 import { StarRating } from '../../components/StarRating'
-
-import { FaLanguage, FaRegFileAlt, FaUserFriends, FaTags } from 'react-icons/fa'
-
+import { useGetPointMovieMutation } from '../../generated/graphql'
 
 const MoviePage = () => {
 
@@ -15,7 +13,13 @@ const MoviePage = () => {
   const [data, getMovieData] = useGetPointMovieMutation()
   useEffect(() => {
     if (router.query && router.query.movie_id) {
-      getMovieData({ imdb_id: router.query.movie_id })
+      let movie_id = ''
+      if (isArray(router.query.movie_id)) {
+        movie_id = router.query.movie_id[0]
+      } else {
+        movie_id = router.query.movie_id;
+      }
+      getMovieData({ imdb_id: movie_id })
     }
   }, [router])
 
@@ -29,7 +33,7 @@ const MoviePage = () => {
       )
     }
     else {
-      const { title, year, movie_id, poster, genre, rating, language, actors, plot } =
+      const { title, year, movie_id, poster, rating, language, actors, plot } =
         data.data.getPointMovie.movie;
       return (
         <Box p={4} display={{ md: "flex" }} mt={["3rem", "10rem"]}>
@@ -54,7 +58,7 @@ const MoviePage = () => {
             </Text>
             <StarRating starcount={rating} />
             <Stack direction="row">{plot ? <Text mt="1rem" mb="1rem">{plot}</Text> : null}</Stack>
-            <Stack direction="row">{genre ? <><Text fontWeight="bold">Genre: </Text><Text>{genre}</Text></> : null}</Stack>
+            {/* <Stack direction="row">{genre ? <><Text fontWeight="bold">Genre: </Text><Text>{genre}</Text></> : null}</Stack> */}
             <Stack direction="row">{actors ? <><Text fontWeight="bold">Starring:</Text><Text>{actors}</Text></> : null}</Stack>
             <Stack direction="row">{language ? <><Text fontWeight="bold">Language:</Text><Text>{language}</Text></> : null}</Stack>
           </Box>

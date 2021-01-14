@@ -6,9 +6,9 @@ import { MoviesResponse } from "./MoviesResponse";
 
 @InputType()
 class MovieQuery {
-  @Field()
+  @Field(() => String)
   name: string;
-  @Field({ nullable: true })
+  @Field(() => Number, { nullable: true })
   page?: number;
 }
 
@@ -17,7 +17,6 @@ export class MovieResolver {
   @Mutation(() => MoviesResponse)
   async getMovies(
     @Arg("options") options: MovieQuery,
-    // @Ctx() { req, redis }: MyContext
   ): Promise<MoviesResponse> {
     const data = await getOmdbSearchData({ s: options.name, page: options.page })
     return formatOmdbSearchData(data);
@@ -28,8 +27,6 @@ export class MovieResolver {
     const data = await getOmdbPointData({ imdb_id })
     return formatOmdbPointData(data)
   }
-
-  // @Mutation(() => Boolean)
   // async voteMovie(
   //   @Arg("movie_id") movie_id: string,
   //   @Ctx() { req, redis }: MyContext

@@ -26,7 +26,7 @@ const Index = () => {
     }
   }
 
-  const onInputChange = (event: Event): void => {
+  const onInputChange = (event: any): void => {
     setListStatus(false)
     setSearchTerm(event.target.value.trim())
     setPage(1)

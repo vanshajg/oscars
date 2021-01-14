@@ -43,7 +43,7 @@ export type MoviesResponse = {
 
 export type Error = {
   __typename?: 'Error';
-  message: Scalars['String'];
+  message?: Maybe<Scalars['String']>;
 };
 
 export type Movie = {

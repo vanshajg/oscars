@@ -34,7 +34,7 @@ const Movie = ({ movie }) => {
         <Text fontWeight="bold" fontSize="3xl">
           {title} ({year})
         </Text>
-        <Stack direction="row" justify={{ sm: "center", md: "start" }}>
+        <Stack direction="row" justify={{ sm: "center", md: "start" }} mt="1rem">
           <Button onClick={() => getMoviePointData({ imdb_id: movie_id })}
             isLoading={movie_point_data.fetching} disabled={!!movie_point_data.data?.getPointMovie}>
             More Info

@@ -3,12 +3,12 @@ import { ObjectType, Field } from "type-graphql";
 
 @ObjectType()
 export class Movie {
-  @Field()
+  @Field(() => String)
   title: string;
-  @Field()
+  @Field(() => String)
   year: string;
-  @Field()
+  @Field(() => String)
   movie_id: string;
-  @Field()
+  @Field(() => String)
   poster: string;
 }

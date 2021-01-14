@@ -3,23 +3,23 @@ import { Error } from './Error'
 
 @ObjectType()
 class MoviePoint {
-  @Field()
+  @Field(() => String)
   title: string;
-  @Field()
+  @Field(() => String)
   year: string;
-  @Field()
+  @Field(() => String)
   movie_id: string;
-  @Field()
+  @Field(() => String)
   poster: string;
-  @Field()
+  @Field(() => String)
   genre: string;
-  @Field()
+  @Field(() => String)
   rating: string;
-  @Field()
+  @Field(() => String)
   language: string;
-  @Field()
+  @Field(() => String)
   actors: string;
-  @Field()
+  @Field(() => String)
   plot: string;
 }
 
