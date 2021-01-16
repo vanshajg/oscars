@@ -6,7 +6,7 @@ import {
 import debounce from 'lodash/debounce'
 import React, { useEffect, useState } from 'react'
 import { Container } from '../components/Container'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
+import { NavigationBar } from '../components/NavigationBar'
 import { SearchList } from '../components/SearchList'
 import { SearchPeek } from '../components/SearchPeek'
 import { useGetMovieListingBySearchTermMutation } from '../generated/graphql'
@@ -56,8 +56,8 @@ const Index = () => {
   const { colorMode } = useColorMode();
   return (
     <Container minHeight="100vh" px="1rem">
-      <DarkModeSwitch />
-      <Box width="100%" mt="5rem" px={["1rem", "15rem"]}>
+      <NavigationBar />
+      <Box width="100%" mt="6rem" px={["1rem", "15rem"]}>
         <Text visibility={!is_list_open ? 'visible' : 'hidden'}>Press return↩  to search all</Text>
         <Input placeholder="Search for movie" fontSize="3xl" onKeyDown={debounce(onKeyDown, 500)}
           height={["4rem", "5rem"]} variant="filled" borderColor={colorMode === "dark" ? 'white' : 'black'} onChange={debounce(onInputChange, 500)}></Input>
